@@ -16,7 +16,11 @@ var tempUnit = CONFIG.weatherUnit;
 
 const KELVIN = 273.15;
 const key = `${CONFIG.weatherKey}`;
-setPosition();
+
+setPosition(); setInterval(function() {
+ 	setPosition();
+ }, 120000) 
+
 
 function setPosition(position) {
 	if (!CONFIG.trackLocation || !navigator.geolocation) {
@@ -60,3 +64,6 @@ function displayWeather() {
 	tempElement.innerHTML = `${weather.temperature.value.toFixed(0)}°<span class="darkfg">${tempUnit}</span>`;
 	descElement.innerHTML = weather.description;
 }
+
+
+
