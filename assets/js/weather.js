@@ -60,7 +60,7 @@ function getWeather(latitude, longitude) {
 }
 
 function displayWeather() {
-	iconElement.innerHTML = `<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.webp"/>`;
+	iconElement.innerHTML = `<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg"/>`;
 	tempElement.innerHTML = `${weather.temperature.value.toFixed(0)}°<span class="darkfg">${tempUnit}</span>`;
 	descElement.innerHTML = weather.description;
 }
