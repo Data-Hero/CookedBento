@@ -2,23 +2,19 @@
 //  │ ├─┤├┤ │││├┤
 //  ┴ ┴ ┴└─┘┴ ┴└─┘
 // Set theme based on Configurations and Preferences
-
-let darkTheme = localStorage.getItem('darkTheme');
+let darkTheme = sessionStorage.getItem('darkTheme');
 const themeToggle = document.querySelector('#themeButton');
-const bodyBackground = document.getElementById('#body');
 
 const enableDark = () => {
 	document.body.classList.add('darktheme');
-	localStorage.setItem('darkTheme', 'enabled');
+	sessionStorage.setItem('darkTheme', 'enabled');
 	themeToggle.innerHTML = `<i id="themeIcon" class="material-icons">sunny</i>`;
-	lucide.createIcons();
 };
 
 const disableDark = () => {
 	document.body.classList.remove('darktheme');
-	localStorage.setItem('darkTheme', null);
+	sessionStorage.setItem('darkTheme', null);
 	themeToggle.innerHTML = `<i id="themeIcon" class="material-icons">bedtime</i>`;
-	lucide.createIcons();
 };
 
 if (darkTheme === 'enabled') {
@@ -30,7 +26,7 @@ if (darkTheme === 'enabled') {
 }
 
 themeToggle.addEventListener('click', () => {
-	darkTheme = localStorage.getItem('darkTheme');
+	darkTheme = sessionStorage.getItem('darkTheme');
 	if (darkTheme !== 'enabled') {
 		enableDark();
 	} else {

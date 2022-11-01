@@ -19,8 +19,17 @@ const key = `${CONFIG.weatherKey}`;
 
 setPosition(); setInterval(function() {
  	setPosition();
- }, 60000) 
+ }, 3600000) 
 
+setInterval(function() {
+	displayWeather(sessionStorage.getItem("darkTheme") === "enabled");		
+}, 500)
+
+window.onstorage = () => {
+	// When local storage changes, dump the list to
+	// the console.
+	console.log(JSON.parse(window.sessionStorage.getItem('sampleList')));
+};
 
 function setPosition(position) {
 	if (!CONFIG.trackLocation || !navigator.geolocation) {
@@ -49,18 +58,24 @@ function getWeather(latitude, longitude) {
 			return data;
 		})
 		.then(function(data) {
+			console.log(data);
 			let celsius = Math.floor(data.main.temp - KELVIN);
 			weather.temperature.value = tempUnit == 'C' ? celsius : (celsius * 9) / 5 + 32;
 			weather.description = data.weather[0].description;
-			weather.iconId = data.weather[0].icon;
+			weather.iconId = data.weather[0].icon || 'unkown';
 		})
 		.then(function() {
-			displayWeather();
+			displayWeather(false);
 		});
 }
 
-function displayWeather() {
-	iconElement.innerHTML = `<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg"/>`;
+function displayWeather(darkTheme = false) {
+	iconElement.innerHTML = darkTheme
+		? `<img src="assets/icons/${CONFIG.darkWeatherIcons}/${weather.iconId}.svg"/>`
+		:`<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg"/>`;
+	if (weather.temperature.value === undefined) {
+		return;
+	}
 	tempElement.innerHTML = `${weather.temperature.value.toFixed(0)}°<span class="darkfg">${tempUnit}</span>`;
 	descElement.innerHTML = weather.description;
 }

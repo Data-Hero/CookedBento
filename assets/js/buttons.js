@@ -3,7 +3,8 @@
 // └─┘└─┘ ┴  ┴ └─┘┘└┘└─┘
 // Function to print Button Cards.
 
-const generateFirstButtonsContainer = () => {
+const generateFirstButtonsContainer = (darkTheme = false) => {
+	let iconPath = darkTheme ? 'White' : 'Dark';
 	for (const button of CONFIG.firstButtonsContainer) {
 		let item = `
         <a
@@ -11,7 +12,7 @@ const generateFirstButtonsContainer = () => {
           target="${CONFIG.openInNewTab ? '_blank' : ''}"
           class="card button button__${button.id}"
         >
-          <i class="buttonIcon" class="material-icons">${button.icon}</i>
+		<img src="assets/icons/${iconPath}/${button.icon}.svg" style="height: 6vh;width: 6vh"/>	
         </a>
     `;
 
@@ -21,7 +22,8 @@ const generateFirstButtonsContainer = () => {
 	}
 };
 
-const generateSecondButtonsContainer = () => {
+const generateSecondButtonsContainer = (darkTheme) => {
+	let iconPath = darkTheme ? 'White' : 'Dark';
 	for (const button of CONFIG.secondButtonsContainer) {
 		let item = `
         <a
@@ -29,7 +31,7 @@ const generateSecondButtonsContainer = () => {
           target="${CONFIG.openInNewTab ? '_blank' : ''}"
           class="card button button__${button.id}"
         >
-          <i class="buttonIcon" class="material-icons">${button.icon}</i>
+		<img src="assets/icons/${iconPath}/${button.icon}.svg" style="height: 6vh;width: 6vh"/>	
         </a>
     `;
 
@@ -39,18 +41,22 @@ const generateSecondButtonsContainer = () => {
 	}
 };
 
-const generateButtons = () => {
+const generateButtons = (darkTheme = false) => {
 	switch (CONFIG.bentoLayout) {
 		case 'bento':
-			generateFirstButtonsContainer();
+			generateFirstButtonsContainer(darkTheme);
 			break;
 		case 'buttons':
-			generateFirstButtonsContainer();
-			generateSecondButtonsContainer();
+			generateFirstButtonsContainer(darkTheme);
+			generateSecondButtonsContainer(darkTheme);
 			break;
 		default:
 			break;
 	}
 };
 
-generateButtons();
+generateButtons(sessionStorage.getItem("darkTheme") === "enabled");
+setInterval(function() {
+	generateButtons(sessionStorage.getItem("darkTheme") === "enabled");		
+}, 500)
+

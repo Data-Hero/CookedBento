@@ -19,15 +19,17 @@
   --fg-date: 8vh; /* Date */
   --fg-list: 2vh; /* Links List */
   --icon: 3vh; /* Icon Size */
-
+  
   /* Fonts Color */
   --fg: #3a3a3a; /* Foreground color */
   --sfg: #494949; /* Sceondary Foreground color */
+  --icons: #000000; /* Icons color */
 
   /* Light Colors  */
-  --accent: #57a0d9; /* Hover color */
+  --accent: #61AFEF; /* Hover color */
   --background: #f5f5f5; /* Background color */
   --cards: #e4e6e6; /* Cards color */
+
 
   /* Image background  */
   --imgbg: url(assets/background.jpg); /* Image URL */
@@ -42,6 +44,7 @@
   --accent: #57a0d9; /* Hover color */
   --background: #19171a; /* Background color */
   --cards: #201e21; /* Cards color */
+  --icons: #f5f5f5; /* Icons color */
 
   /* Fonts Color */
   --fg: #d8dee9; /* Foreground color */
@@ -89,8 +92,17 @@ body {
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 48
+    'opsz' 40
 }
+
+.material-icons-outlined {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 500,
+    'GRAD' 100,
+    'opsz' 40
+}
+
 
 .withImageBackground {
   background-image: var(--imgcol), var(--imgbg);
@@ -125,13 +137,13 @@ body {
 
 .card {
   background-color: var(--cards);
-  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.20);
   border-radius: 5px;
 }
 
 .card:hover {
   transform: translateY(-0.2rem);
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.20);
 }
 
 .timeBlock {

@@ -28,6 +28,7 @@ const CONFIG = {
 	// Weather
 	weatherKey: '', // Write here your API Key
 	weatherIcons: 'Dark', // 'Onedark', 'Nord', 'Dark', 'White'
+	darkWeatherIcons: 'White', // 'Onedark', 'Nord', 'Dark', 'White'
 	weatherUnit: 'C', // 'F', 'C'
 	language: 'en', // More languages in https://openweathermap.org/current#multi
 
@@ -42,7 +43,7 @@ const CONFIG = {
 	changeThemeByOS: true,
 
 	// Autochange by hour options (24hrs format, string must be in: hh:mm)
-	changeThemeByHour: false,
+	changeThemeByHour: true,
 	hourDarkThemeActive: '18:30',
 	hourDarkThemeInactive: '07:00',
 
@@ -60,7 +61,7 @@ const CONFIG = {
 		{
 			id: '2',
 			name: 'Mail',
-			icon: 'mail',
+			icon: 'protonmail',
 			link: 'https://mail.protonmail.com/',
 		},
 		{
@@ -72,14 +73,14 @@ const CONFIG = {
 		{
 			id: '4',
 			name: 'Calendar',
-			icon: 'calendar',
+			icon: 'google_calendar',
 			link: 'https://calendar.google.com/calendar/r',
 		},
 		{
 			id: '5',
-			name: 'Reddit',
-			icon: 'glasses',
-			link: 'https://reddit.com',
+			name: 'Stackoverflow',
+			icon: 'stackoverflow',
+			link: 'https://stackoverflow.com',
 		},
 		{
 			id: '6',
@@ -135,7 +136,7 @@ const CONFIG = {
 	// First Links Container
 	firstlistsContainer: [
 		{
-			icon: 'music',
+			icon: 'earbuds',
 			id: '1',
 			links: [
 				{
