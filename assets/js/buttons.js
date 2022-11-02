@@ -2,15 +2,17 @@
 // ├┴┐│ │ │  │ │ ││││└─┐
 // └─┘└─┘ ┴  ┴ └─┘┘└┘└─┘
 // Function to print Button Cards.
+let theme = sessionStorage.getItem('darkTheme');
 
-const generateFirstButtonsContainer = (darkTheme = false) => {
-	let iconPath = darkTheme ? 'White' : 'Dark';
+const generateFirstButtonsContainer = () => {
+	let iconPath = theme === "enabled" ? 'White' : 'Dark';
+	document.querySelectorAll(".updated-card").forEach((card) => { card.remove() });
 	for (const button of CONFIG.firstButtonsContainer) {
 		let item = `
         <a
           href="${button.link}"
           target="${CONFIG.openInNewTab ? '_blank' : ''}"
-          class="card button button__${button.id}"
+          class="card button updated-card button__${button.id}"
         >
 		<img src="assets/icons/${iconPath}/${button.icon}.svg" style="height: 6vh;width: 6vh"/>	
         </a>
@@ -22,14 +24,15 @@ const generateFirstButtonsContainer = (darkTheme = false) => {
 	}
 };
 
-const generateSecondButtonsContainer = (darkTheme) => {
-	let iconPath = darkTheme ? 'White' : 'Dark';
+const generateSecondButtonsContainer = () => {
+	let iconPath = theme === "enabled" ? 'White' : 'Dark';
+	document.querySelectorAll(".updated-card").forEach((card) => { card.remove() });
 	for (const button of CONFIG.secondButtonsContainer) {
 		let item = `
         <a
           href="${button.link}"
           target="${CONFIG.openInNewTab ? '_blank' : ''}"
-          class="card button button__${button.id}"
+          class="card button updated-card button__${button.id}"
         >
 		<img src="assets/icons/${iconPath}/${button.icon}.svg" style="height: 6vh;width: 6vh"/>	
         </a>
@@ -41,22 +44,27 @@ const generateSecondButtonsContainer = (darkTheme) => {
 	}
 };
 
-const generateButtons = (darkTheme = false) => {
+const generateButtons = () => {
 	switch (CONFIG.bentoLayout) {
 		case 'bento':
-			generateFirstButtonsContainer(darkTheme);
+			generateFirstButtonsContainer();
 			break;
 		case 'buttons':
-			generateFirstButtonsContainer(darkTheme);
-			generateSecondButtonsContainer(darkTheme);
+			generateFirstButtonsContainer();
+			generateSecondButtonsContainer();
 			break;
 		default:
 			break;
 	}
 };
 
-generateButtons(sessionStorage.getItem("darkTheme") === "enabled");
+generateButtons();
+sessionStorage.setItem('oldDarkTheme', theme);
 setInterval(function() {
-	generateButtons(sessionStorage.getItem("darkTheme") === "enabled");		
+	theme = sessionStorage.getItem('darkTheme');
+	if (sessionStorage.getItem('oldDarkTheme') !== theme) {
+		console.log('theme changed');
+		sessionStorage.setItem('oldDarkTheme', theme);
+		generateButtons();		
+	}
 }, 500)
-

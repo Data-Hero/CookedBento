@@ -58,11 +58,11 @@ function getWeather(latitude, longitude) {
 			return data;
 		})
 		.then(function(data) {
-			console.log(data);
 			let celsius = Math.floor(data.main.temp - KELVIN);
 			weather.temperature.value = tempUnit == 'C' ? celsius : (celsius * 9) / 5 + 32;
 			weather.description = data.weather[0].description;
-			weather.iconId = data.weather[0].icon || 'unkown';
+			weather.iconId = data.weather[0].icon;
+
 		})
 		.then(function() {
 			displayWeather(false);
@@ -70,6 +70,9 @@ function getWeather(latitude, longitude) {
 }
 
 function displayWeather(darkTheme = false) {
+	if (!weather.iconId) {
+		weather.iconId = 'unknown';
+	} 
 	iconElement.innerHTML = darkTheme
 		? `<img src="assets/icons/${CONFIG.darkWeatherIcons}/${weather.iconId}.svg"/>`
 		:`<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg"/>`;
