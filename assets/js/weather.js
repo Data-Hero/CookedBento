@@ -31,23 +31,8 @@ window.onstorage = () => {
 	console.log(JSON.parse(window.sessionStorage.getItem('sampleList')));
 };
 
-function setPosition(position) {
-	if (!CONFIG.trackLocation || !navigator.geolocation) {
-		if (CONFIG.trackLocation) {
-			console.error('Geolocation not available');
-		}
-		getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
-		return;
-	}
-	navigator.geolocation.getCurrentPosition(
-		pos => {
-			getWeather(pos.coords.latitude.toFixed(3), pos.coords.longitude.toFixed(3));
-		},
-		err => {
-			console.error(err);
-			getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
-		}
-	);
+function setPosition() {
+	getWeather(CONFIG.defaultLatitude, CONFIG.defaultLongitude);
 }
 
 function getWeather(latitude, longitude) {
@@ -82,6 +67,4 @@ function displayWeather(darkTheme = false) {
 	tempElement.innerHTML = `${weather.temperature.value.toFixed(0)}°<span class="darkfg">${tempUnit}</span>`;
 	descElement.innerHTML = weather.description;
 }
-
-
 

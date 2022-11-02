@@ -1,17 +1,3 @@
-![image](assets/img/header.png)
-
-<p style="margin: -20px 0 30px">
-  <a href="https://www.buymeacoffee.com/migueravila" target="_blank" style='margin-right:0px; margin-top:5px'>
-    <img align="center" src="https://github.com/migueravila/Bento/blob/master/assets/img/donation.png" alt="donation" height="35px" />
-  </a>
-
-  <a href="https://migueravila.github.io/Bento/" target="_blank" style='margin-right:0px; margin-top:5px'>
-    <img align="center" src="https://github.com/migueravila/Bento/blob/master/assets/img/live.png" alt="live-preview" height="35px" />
-  </a>
-</p>
-
-<br />
-
 ## 👇 Index
 - [👇 Index](#-index)
 - [✨ Features](#-features)
@@ -19,14 +5,16 @@
   - [🏡 As Home Page](#-as-home-page)
   - [➕ As New Tab](#-as-new-tab)
   - [🐬 In a Docker Container](#-in-a-docker-container)
+    - [Docker run](#docker-run)
+    - [docker-compose](#docker-compose)
 - [🎨 Customization](#-customization)
   - [👋 General: Name, Image Background and Greetings](#-general-name-image-background-and-greetings)
-  - [📐 Layouts: Bento, Lists and Buttons.](#-layouts-bento-lists-and-buttons)
   - [🏷️ Buttons & Links](#️-buttons--links)
   - [📑 Lists & Links](#-lists--links)
   - [⛈️ Weather: Api Key, Icons and Unit](#️-weather-api-key-icons-and-unit)
   - [💛 Colors](#-colors)
   - [🌑 Auto change theme](#-auto-change-theme)
+  - [Credit](#credit)
 
 
 ## ✨ Features
@@ -97,21 +85,6 @@ To change the default name, the greetings and if you want to have an image backg
 
 > You can change the background by substituting the `background.jpg` file in `assets` folder.
 
-![](assets/img/backgroundImage.png)
-
-### 📐 Layouts: Bento, Lists and Buttons.
-
-Bento has three different layouts `bento`, `lists` & `buttons`. It allows you to cutomize your experience giving you more buttons or lists depending on how are you more comfortable. To modify the laout you need to change the following line in the `config.js` file:
-
-```js
-  // Layout
-  bentoLayout: 'bento', // 'bento', 'lists', 'buttons'
-
-```
-
-If you want to customize all your extra buttons and lists go to [🏷️ Buttons & Links](#️-buttons--links) & [📑 Lists & Links](#-lists--links) sections.
-
-![](assets/img/bentoLayouts.png)
 
 ### 🏷️ Buttons & Links
 
@@ -215,14 +188,12 @@ The same happens with the list links, you can change the list icon (also using L
 
 For setting up the Weather widget you'll need an API Key from: `https://openweathermap.org/`. Once you have your Key you'll need to set your latitude and longitude, you can use: `https://www.latlong.net/` to get them. 
 
-Finally, choose an Icon set:
-
-![](assets/img/icons.png)
+Finally, use the light and dark Icon set or adjustthe card icons yourself:
 
 - **Nord** Using the Nord Color Scheme and easy-to-eyes colors
-- **OneDark** (_Default one_) Using the One Dark Pro color scheme
-- **Dark** For White theme only users that want a minimalist look
-- **White** For Dark theme only users that want a minimalist look
+- **OneDark** Using the One Dark Pro color scheme
+- **Dark** (Default) For White theme only users that want a minimalist look
+- **White** (Default) For Dark theme only users that want a minimalist look
 
 Finally just add them to the `config.js` file.
 
@@ -243,21 +214,13 @@ In the `app.css` file you can change the variables for both themes (Dark and Lig
 /* Light theme  */
 
 :root {
-  --accent: #61b0f1; /* Hover color */
-  --bg: #f5f5f5; /* Background color */
-  --sbg: #e4e6e6; /* Cards color */
-  --fg: #3a3a3a; /* Foreground color */
-  --sfg: #3a3a3a; /* Sceondary Foreground color */
+ ...
 }
 
 /* Dark theme  */
 
 .darktheme {
-  --accent: #61b0f1; /* Hover color */
-  --bg: #19171a; /* Background color */
-  --sbg: #201e21; /* Cards color */
-  --fg: #d8dee9; /* Foreground color */
-  --sfg: #3a3a3a; /* Secondary Foreground color */
+...
 }
 ```
 
@@ -279,4 +242,6 @@ that you can change in the `config.js` file:
   hourDarkThemeInactive: '07:00', // Turn off the dark theme after this hour and before the above hour
 ```
 
-![](assets/img/darkMode.png)
+### Credit
+This used to be a fork of the [original Bento](https://github.com/migueravila/Bento) that now lives in it's own repository.
+The Icons were taken from [material icons](https://fonts.google.com/icons) and [simple icons](https://github.com/simple-icons/simple-icons)  .

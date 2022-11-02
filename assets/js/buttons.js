@@ -5,7 +5,7 @@
 let theme = sessionStorage.getItem('darkTheme');
 
 const generateFirstButtonsContainer = () => {
-	let iconPath = theme === "enabled" ? 'White' : 'Dark';
+	let iconPath = theme === "enabled" ? CONFIG.darkWeatherIcons : CONFIG.weatherIcons;
 	document.querySelectorAll(".updated-card").forEach((card) => { card.remove() });
 	for (const button of CONFIG.firstButtonsContainer) {
 		let item = `
@@ -25,7 +25,7 @@ const generateFirstButtonsContainer = () => {
 };
 
 const generateSecondButtonsContainer = () => {
-	let iconPath = theme === "enabled" ? 'White' : 'Dark';
+	let iconPath = theme === "enabled" ? CONFIG.darkWeatherIcons : CONFIG.weatherIcons;
 	document.querySelectorAll(".updated-card").forEach((card) => { card.remove() });
 	for (const button of CONFIG.secondButtonsContainer) {
 		let item = `
