@@ -8,13 +8,27 @@ const themeToggle = document.querySelector('#themeButton');
 const enableDark = () => {
 	document.body.classList.add('darktheme');
 	sessionStorage.setItem('darkTheme', 'enabled');
-	themeToggle.innerHTML = `<i id="themeIcon" class="material-icons">sunny</i>`;
+	themeToggle.innerHTML = `<img src="assets/icons/White/dark_mode.svg" height="40px" width="40px"/>`;
+
+	for (const list of CONFIG.firstlistsContainer) {
+		let element = document.querySelector("#" + list.icon + "-icon");
+		console.log(list, element)
+		if (element) {
+			element.innerHTML = `<img src="assets/icons/White/${list.icon}.svg"/>`;
+		}
+	}
 };
 
 const disableDark = () => {
 	document.body.classList.remove('darktheme');
 	sessionStorage.setItem('darkTheme', null);
-	themeToggle.innerHTML = `<i id="themeIcon" class="material-icons">bedtime</i>`;
+	themeToggle.innerHTML = `<img src="assets/icons/Dark/light_mode.svg" height="40px" width="40px"/>`;
+	for (const list of CONFIG.firstlistsContainer) {
+		let element = document.querySelector("#" + list.icon + "-icon");
+		if (element) {
+			element.innerHTML = `<img src="assets/icons/Dark/${list.icon}.svg"/>`;
+		}
+	}
 };
 
 if (darkTheme === 'enabled') {

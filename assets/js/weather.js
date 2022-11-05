@@ -23,7 +23,7 @@ setPosition(); setInterval(function() {
 
 setInterval(function() {
 	displayWeather(sessionStorage.getItem("darkTheme") === "enabled");		
-}, 500)
+}, 200)
 
 window.onstorage = () => {
 	// When local storage changes, dump the list to
@@ -59,8 +59,8 @@ function displayWeather(darkTheme = false) {
 		weather.iconId = 'unknown';
 	} 
 	iconElement.innerHTML = darkTheme
-		? `<img src="assets/icons/${CONFIG.darkWeatherIcons}/${weather.iconId}.svg"/>`
-		:`<img src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg"/>`;
+		? `<img id="weather-icon" src="assets/icons/${CONFIG.darkWeatherIcons}/${weather.iconId}.svg"width="48" height="48"/>`
+		:`<img id="weather-icon" src="assets/icons/${CONFIG.weatherIcons}/${weather.iconId}.svg" width="48" height="48"/>`;
 	if (weather.temperature.value === undefined) {
 		return;
 	}
