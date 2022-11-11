@@ -2,10 +2,9 @@
 // │ ┬├┬┘├┤ ├┤  │ │││││ ┬└─┐
 // └─┘┴└─└─┘└─┘ ┴ ┴┘└┘└─┘└─┘
 // Function to set Greetings
-
 const today = new Date();
-const hour = today.getHours();
-const name = CONFIG.name;
+const hour  = today.getHours();
+const name  = CONFIG.name;
 
 const gree1 = `${CONFIG.greetingNight}\xa0`;
 const gree2 = `${CONFIG.greetingMorning}\xa0`;

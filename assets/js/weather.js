@@ -21,7 +21,7 @@ setPosition(); setInterval(function() {
  	setPosition();
  }, 3600000) 
 
-setInterval(function() {
+displayWeather();setInterval(function() {
 	displayWeather(sessionStorage.getItem("darkTheme") === "enabled");		
 }, 200)
 
@@ -67,4 +67,3 @@ function displayWeather(darkTheme = false) {
 	tempElement.innerHTML = `${weather.temperature.value.toFixed(0)}°<span class="darkfg">${tempUnit}</span>`;
 	descElement.innerHTML = weather.description;
 }
-
