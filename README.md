@@ -25,7 +25,7 @@
 - **Clock and Date** format can be set to 24 hour (default) or 12 hour.
 - **Greetings** are easy to modify.
 - **Variables** for custom colors and font sizes in the `app.css` code.
-- **Icons** all icons are from [Lucide icons](https://lucide.dev).
+- **Icons** all icons are Material from Google.
 - **Modular** javascript files for an easy read.
 
 ## 🚀 Usage
